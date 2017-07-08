@@ -30,8 +30,10 @@ class MongoServiceProvider implements ServiceProviderInterface
     public function register(Container $app)
     {
         $app['mongo'] = function ($app) {
+            // default options
             $config = MongoServiceProvider::DEFAULT_OPTIONS;
 
+            // process options
             if (!isset($app['mongo.config'])) {
                 $app['mongo.config'] = [];
             }
@@ -42,6 +44,7 @@ class MongoServiceProvider implements ServiceProviderInterface
             }
             $app['mongo.config'] = $config;
 
+            // create database connection
             $client = new Client(
                 $app['mongo.config']['server'],
                 $app['mongo.config']['options'],
