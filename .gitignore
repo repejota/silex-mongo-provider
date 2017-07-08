@@ -1,1 +1,7 @@
 .idea
+*.phar
+clover.xml
+composer.lock
+/coverage/
+/vendor/
+/docs/
