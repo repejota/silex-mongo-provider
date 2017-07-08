@@ -1,0 +1,22 @@
+{
+    "name": "repejota/silex-mongo-provider",
+    "description": "Mongo service provider for the Silex micro framework. Edit",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Raül Pérez",
+            "email": "repejota@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "mongodb/mongodb": "^1.1",
+        "silex/api": "^2.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    }
+}
