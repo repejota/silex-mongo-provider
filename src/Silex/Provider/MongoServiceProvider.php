@@ -25,7 +25,7 @@ class MongoServiceProvider implements ServiceProviderInterface
      * Register Mongo provider.
      *
      * @param Container $app Application dependency container.
-     * @return mixed
+     * @return void
      */
     public function register(Container $app)
     {
