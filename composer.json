@@ -10,5 +10,13 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+    "require": {
+        "mongodb/mongodb": "^1.1",
+        "silex/api": "^2.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    }
 }
