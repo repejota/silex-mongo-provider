@@ -6,26 +6,32 @@ use Pimple\Container;
 use MongoDB\Client;
 
 /**
- * Class MongoDBServiceProvider.
+ * Class MongoServiceProvider.
  *
  * @package Silex\Provider
  */
-class MongoDBServiceProvider implements ServiceProviderInterface
+class MongoServiceProvider implements ServiceProviderInterface
 {
+    /**
+     * Default options
+     */
+    const DEFAULT_OPTIONS = [
+        'server' => 'mongodb://localhost:27017',
+        'options' => [],
+        'driverOptions' => [],
+    ];
+
     /**
      * Register Mongo provider.
      *
      * @param Container $app Application dependency container.
-     * @return mixed
+     * @return void
      */
     public function register(Container $app)
     {
         $app['mongo'] = function ($app) {
-            $config = [
-                'server' => 'mongodb://localhost:27017',
-                'options' => [],
-                'driverOptions' => [],
-            ];
+            $config = MongoServiceProvider::DEFAULT_OPTIONS;
+
             if (!isset($app['mongo.config'])) {
                 $app['mongo.config'] = [];
             }
@@ -35,6 +41,7 @@ class MongoDBServiceProvider implements ServiceProviderInterface
                 }
             }
             $app['mongo.config'] = $config;
+
             $client = new Client(
                 $app['mongo.config']['server'],
                 $app['mongo.config']['options'],
